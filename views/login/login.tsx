@@ -1,4 +1,4 @@
-import supabase from "@/app/supabase";
+import supabase, { isLoggedIn } from "@/app/supabase";
 import loginValidation from "@/validation/loginValidation";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { Formik, Form, Field } from "formik";
@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 const LoginView = () => {
   const router = useRouter();
+
   const handleSubmit = async (values: any) => {
     const { email, password } = values;
     let { data, error } = await supabase.auth.signInWithPassword({
