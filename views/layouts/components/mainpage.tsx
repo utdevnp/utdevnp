@@ -1,5 +1,4 @@
-import { Box, Button, Card, Stack, Typography } from "@mui/material";
-import Image from "next/image";
+import { Button, Stack, Typography } from "@mui/material";
 
 const MainPage = () => {
   return (
@@ -34,6 +33,11 @@ const MainPage = () => {
             Let's have a look
           </Typography>
         </Button>
+      </Stack>
+      <Stack>
+        <Typography textAlign="center">
+          Free forever, No credit card required.
+        </Typography>
       </Stack>
     </Stack>
   );

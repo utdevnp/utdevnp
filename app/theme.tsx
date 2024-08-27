@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material/styles";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
-  subsets: ["latin", "cyrillic"],
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -24,6 +24,7 @@ const theme = createTheme({
           border: "none",
           textTransform: "capitalize",
         },
+
         outlinedSecondary: {
           border: "none",
           backgroundColor: "none",

@@ -3,11 +3,11 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import MainPage from "./components/mainpage";
 
-const LandingPageLayout = () => {
+const LandingPageLayout = ({ children }: { children: any }) => {
   return (
     <>
       <Header />
-      <MainPage />
+      {children}
       <Footer />
     </>
   );

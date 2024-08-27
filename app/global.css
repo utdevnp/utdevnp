@@ -35,5 +35,8 @@ body {
 .MuiButton-root .gradient {
   background: linear-gradient(56deg, #45c4f9, #7d09ff 50.33%, #ff0be5);
   box-shadow: 0 4px 4px 0 rgba(87, 75, 172, .15);
+}
 
+.MuiInputBase-input {
+  padding: 4px;
 }

@@ -1,5 +1,8 @@
-import { Button, Stack, Typography } from "@mui/material";
+import supabase, { isLoggedIn } from "@/app/supabase";
+import { Avatar, Button, Stack, Typography } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 const style = {
   border: "1px solid #dedede",
   padding: "5px",
@@ -7,10 +10,18 @@ const style = {
   borderRadius: "14px",
 };
 const Header = () => {
+  const logged = isLoggedIn();
+  const router = useRouter();
+
+  const logout = async () => {
+    let { error } = await supabase.auth.signOut();
+    localStorage.removeItem("isLoggedIn");
+    router.refresh();
+  };
   return (
     <Stack direction="row" justifyContent="space-between" gap={1} mt={1}>
       <Stack direction="row" sx={style} gap={2} justifyContent="space-between">
-        <Stack gap={2}>
+        <Stack gap={2} onClick={() => router.push("/")}>
           <Image
             src="https://clickup.com/assets/brand/logo-v3-clickup-light.svg"
             alt="logo"
@@ -45,12 +56,36 @@ const Header = () => {
       </Stack>
 
       <Stack direction="row" sx={style} gap={1}>
-        <Button variant="outlined" color="secondary">
-          Login
-        </Button>
-        <Button variant="contained" color="primary">
-          Sign up
-        </Button>
+        {logged ? (
+          <>
+            <Avatar></Avatar>
+            <Button
+              variant="outlined"
+              onClick={() => logout()}
+              color="secondary"
+            >
+              <Typography color="red">Logout</Typography>
+            </Button>
+          </>
+        ) : (
+          <>
+            {" "}
+            <Button
+              variant="outlined"
+              onClick={() => router.push("/login")}
+              color="secondary"
+            >
+              Login
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => router.push("/signup")}
+              color="primary"
+            >
+              Sign up
+            </Button>
+          </>
+        )}
       </Stack>
     </Stack>
   );

@@ -1,17 +1,17 @@
 "use client";
-import MainPage from "@/views/layouts/components/mainpage";
 import LandingPageLayout from "@/views/layouts/landingPage";
+import LoginView from "@/views/login/login";
 import { Container } from "@mui/material";
 import React from "react";
 
-const Home = () => {
+const LoginPage = () => {
   return (
     <Container>
       <LandingPageLayout>
-        <MainPage />
+        <LoginView />
       </LandingPageLayout>
     </Container>
   );
 };
 
-export default Home;
+export default LoginPage;
